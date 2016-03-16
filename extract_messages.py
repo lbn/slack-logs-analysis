@@ -43,7 +43,7 @@ NextGram = namedtuple("NextGram", "grams probs")
 def main():
     probs = {}
     words = {}
-    with open("dom_messages.json") as f:
+    with open("danielle_messages.json") as f:
         js = json.load(f)
         messages = [clean(msg) for msg in js]
         messages = [msg for msg in messages if len(msg.split()) > 4]
@@ -82,7 +82,7 @@ def main():
             return choice(probs[this_gram].grams, 1, probs[this_gram].probs)[0]
 
 
-        for j in range(100000):
+        for j in range(10000):
             sentence = []
             gram = next_gram(START)
             for i in range(20):
